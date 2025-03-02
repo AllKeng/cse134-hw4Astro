@@ -1,20 +1,36 @@
 ---
 // ProjectCard.astro
+import myVideo from '../assets/pantrypalDemo.mp4'; 
+import boardMobile from '../assets/BoardView-mobile.png';
+import boardTablet from '../assets/BoardView-tablet.png';
+import boardView from '../assets/BoardView.png'
+// Extract the actual URL for each image
+const mobileImage = 'src/assets/BoardView-mobile.png';
+const tabletImage = 'src/assets/BoardView-tablet.png';
+const desktopImage = 'src/assets/BoardView.png';
+
+import { Picture } from 'astro:assets';
 const { title, imageSrc, imageAlt, techStack, description, demoLink, videoSrc, footer } = Astro.props;
 ---
 
-<article class="fancy-card">
+
+<fancy-card>
   <header>{title}</header>
   {videoSrc ? (
     <video controls>
-      <source src={videoSrc} type="video/mp4" />
+      <source src={myVideo} type="video/mp4" />
       Your browser does not support the video element.
     </video>
   ) : (
     <picture>
-      <source srcset={imageSrc} media="(min-width: 1024px)" />
-      <source srcset={imageSrc.replace('BoardView', 'BoardView-tablet')} media="(min-width: 768px)" />
-      <img src={imageSrc.replace('BoardView', 'BoardView-mobile')} alt={imageAlt} />
+        <!-- Medium screen (768px and up) -->
+        <source srcset={tabletImage} media="(min-width: 768px)" />
+        
+        <!-- Large screen (1024px and up) -->
+        <source srcset={desktopImage} media="(min-width: 1024px)" />
+        
+        <!-- Mobile view (default) -->
+        <img src={mobileImage} alt="TripleS Board" />
     </picture>
   )}
   <ul>
@@ -22,4 +38,4 @@ const { title, imageSrc, imageAlt, techStack, description, demoLink, videoSrc, f
   </ul>
   {demoLink && <footer><a href={demoLink}>Project website</a></footer>}
   <footer>{footer}</footer>
-</article>
+</fancy-card>

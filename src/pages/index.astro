@@ -2,6 +2,8 @@
 // index.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Sidebar from '../components/Sidebar.astro';
+import { Picture } from 'astro:assets';
+import myImage from '../assets/headshot.jpg'; // Image is 1600x900
 
 const activeLink = 'home';
 ---
@@ -9,9 +11,8 @@ const activeLink = 'home';
 <BaseLayout activeLink={activeLink}>
   <h2>About Me</h2>
   <div class="about-content">
-    <picture>
-      <img src="/media/headshot.jpg" alt="Image of Me" class="headshot">
-    </picture>
+	<Picture src={myImage} formats={['jpg']} alt="Image of Me." class="headshot" />
+
     <p class="about-text">
       Hello, welcome to my portfolio! I'm a Computer Engineering major at UC San Diego.
       <em> It's just a part of who I am.</em> I always want to do more, be more.
