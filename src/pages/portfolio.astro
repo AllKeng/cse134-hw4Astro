@@ -1,0 +1,58 @@
+---
+// portfolio.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const activeLink = 'portfolio';
+
+const projects = [
+  {
+    title: 'Snowboard Support System',
+    imageSrc: '/assets/BoardView.png',
+    imageAlt: 'TripleS Board',
+    description: [
+      'Arduino C for accelerometer data retrieval and bluetooth data transferring',
+      'KiCad for PCB design to integrate our ESP32, accelerometer, power supply, potentiometer, and buzzer in a compact manner.',
+      'Python GUI to retrieve and display data via Bleak and Tkinter.',
+      'Project website using HTML, JS, CSS.'
+    ],
+    demoLink: 'https://allkeng.github.io/Snowboard-Support-System/',
+    footer: 'C, Python, Bluetooth Low Energy, HTML, JS, CSS'
+  },
+  {
+    title: 'Pantry Pals',
+    videoSrc: '/assets/pantrypalDemo.mp4',
+    description: [
+      'Server setup to handle HTTP request for managing recipes and user data with backend connectivity to a MongoDB database.',
+      'ChatGPT API used to generate recipes and images from user-provided ingredients.',
+      'Java GUI to display recipe details, following MVC Principles.',
+      'Github Actions setup to run JUnit Test.'
+    ],
+    footer: 'Java, JUnit, JavaFX, ChatGPT API, RESTful API, MongoDB'
+  }
+];
+
+---
+
+<BaseLayout activeLink={activeLink}>
+  <main>
+    <hr />
+    <section>
+      <hgroup>
+        <h2>List of Projects</h2>
+        <p>These are projects I have collaborated on.</p>
+      </hgroup>
+      {projects.map(project => (
+        <ProjectCard {...project} />
+      ))}
+    </section>
+
+    <dl>
+      <dt>PCB</dt>
+      <dd>Programmable Circuit Board</dd>
+
+      <dt>MVC</dt>
+      <dd>Model View Controller</dd>
+    </dl>
+  </main>
+</BaseLayout>

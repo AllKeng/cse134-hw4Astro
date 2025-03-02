@@ -1,0 +1,25 @@
+---
+// ProjectCard.astro
+const { title, imageSrc, imageAlt, techStack, description, demoLink, videoSrc, footer } = Astro.props;
+---
+
+<article class="fancy-card">
+  <header>{title}</header>
+  {videoSrc ? (
+    <video controls>
+      <source src={videoSrc} type="video/mp4" />
+      Your browser does not support the video element.
+    </video>
+  ) : (
+    <picture>
+      <source srcset={imageSrc} media="(min-width: 1024px)" />
+      <source srcset={imageSrc.replace('BoardView', 'BoardView-tablet')} media="(min-width: 768px)" />
+      <img src={imageSrc.replace('BoardView', 'BoardView-mobile')} alt={imageAlt} />
+    </picture>
+  )}
+  <ul>
+    {description.map((item: unknown) => <li>{item}</li>)}
+  </ul>
+  {demoLink && <footer><a href={demoLink}>Project website</a></footer>}
+  <footer>{footer}</footer>
+</article>
