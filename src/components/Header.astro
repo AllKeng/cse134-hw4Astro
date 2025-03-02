@@ -1,0 +1,39 @@
+---
+// Header.astro
+const { activeLink = '' } = Astro.props; // Accepting an activeLink prop
+---
+
+<header>
+  <nav>
+    <input type="checkbox" id="hamburger-toggle" class="hamburger-toggle">
+    <label for="hamburger-toggle" class="hamburger-menu" aria-label="Toggle Navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <ul class="nav-links">
+      <li>
+        <a href="index.html" class={activeLink === 'home' ? 'active' : ''}>Home</a>
+      </li>
+      <li>
+        <a href="portfolio.html" class={activeLink === 'projects' ? 'active' : ''}>Projects</a>
+      </li>
+      <li>
+        <a href="info.html" class={activeLink === 'resume' ? 'active' : ''}>Resume</a>
+      </li>
+    </ul>
+
+    <button id="theme-toggle" aria-label="Toggle Theme">
+      <span id="sun-icon">&#9728;</span> <!-- Sun icon for light mode -->
+      <span id="moon-icon">&#9790;</span> <!-- Moon icon for dark mode -->
+    </button>
+    <noscript>
+      <style>
+        #theme-toggle {
+          display: none;
+        }
+      </style>
+    </noscript>
+  </nav>
+</header>
