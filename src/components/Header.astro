@@ -17,10 +17,10 @@ const { activeLink = '' } = Astro.props; // Accepting an activeLink prop
         <a href="/" class={activeLink === 'home' ? 'active' : ''}>Home</a>
       </li>
       <li>
-        <a href="portfolio" class={activeLink === 'projects' ? 'active' : ''}>Projects</a>
+        <a href="/portfolio" class={activeLink === 'projects' ? 'active' : ''}>Projects</a>
       </li>
       <li>
-        <a href="info" class={activeLink === 'resume' ? 'active' : ''}>Resume</a>
+        <a href="/info" class={activeLink === 'resume' ? 'active' : ''}>Resume</a>
       </li>
     </ul>
 
